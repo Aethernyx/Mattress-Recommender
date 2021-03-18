@@ -107,4 +107,8 @@ def predict_api():
     output = prediction[0]
     return jsonify(output)
 
-app.run('127.0.0.1', debug=True)
+
+
+
+if __name__ == '__main__':
+    app.run('127.0.0.1', debug=True)
