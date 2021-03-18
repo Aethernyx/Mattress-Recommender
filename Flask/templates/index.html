@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>Mattress Recommendation Generator</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+        <label for="price_range">Price:</label>
+        <select name="price_range">
+            <option value="<500">Under $500</option>
+            <option value="500-1000">$500-$1000</option>
+            <option value="1001-1500">$1001-$1500</option>
+            <option value="1501-2000">$1501-$2000</option>
+            <option value="2001-2500">$2001-$2500</option>
+            <option value="2501+">$2501+</option>
+        </select>
+
+        <label for="mattress_size">Mattress Size:</label>
+        <select name="mattress_size">
+            <option value="Twin">Twin</option>
+            <option value="Twin XL">Twin Long</option>
+            <option value="Full">Full</option>
+            <option value="Queen">Queen</option>
+            <option value="King">King</option>
+            <option value="CA King">CA King</option>
+        </select>
+
+        <label for="mattress_type">Mattress Type:</label>
+        <select name="mattress_type">
+            <option value="Foam">Memory Foam</option>
+            <option value="Hybrid">Hybrid</option>
+        </select>
+
+        <label for="sleep_style">Sleep Style:</label>
+        <select name="sleep_style"
+        multiple="multiple">
+            <option value="Back">Back Sleeper</option>
+            <option value="Side">Side Sleeper</option>
+            <option value="Stomach">Stomach Sleeper</option>
+        </select>
+
+        <br>
+        <br>
+        <strong>Enter any additional information here:</strong>
+        <br>
+        <textarea rows = "5" cols = "60" name = "description">
+         </textarea><br>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
