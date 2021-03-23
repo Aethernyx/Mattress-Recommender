@@ -14,6 +14,19 @@ def home():
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
+def predict():
+    '''
+    for rendering results on HTML GUI
+    '''
+    features = [str(x) for x in request.form.values()]
+    print(features)
+    final_features = 'I am a {}, and I prefer a {} {} mattress around {} dollars. {}'.format(features[3], features[1],
+                                                                                          features[2], features[0],
+                                                                                             features[-1])
+
+    best_mattress = mattress_recommender(final_features)
+
+    return render_template('index.html', prediction_text=best_mattress)
 
 
 
@@ -81,25 +94,13 @@ def mattress_recommender(text):
                                      int(top_mattress['price']))
 
 
-def predict():
-    '''
-    for rendering results on HTML GUI
-    '''
-    features = [str(x) for x in request.form.values()]
-    print(features)
-    final_features = 'I am a {}, and I prefer a {} {} mattress around {} dollars. {}'.format(features[3], features[1],
-                                                                                          features[2], features[0],
-                                                                                             features[-1])
 
-    best_mattress = mattress_recommender(final_features)
-
-    return render_template('index.html', prediction_text=best_mattress)
-
+'''
 @app.route('/predict_api', methods=['POST'])
 def predict_api():
-    '''
-    for direct API calls
-    '''
+    
+    #for direct API calls
+    
     data = request.get_json(force=True)
 
 
@@ -109,6 +110,7 @@ def predict_api():
 
     output =
     return jsonify(output)
+    '''
 
 if __name__ == '__main__':
     app.run(debug=True)
