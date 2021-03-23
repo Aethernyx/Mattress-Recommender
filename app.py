@@ -68,8 +68,13 @@ def mattress_recommender(text):
         if bed_type.lower() in cleaned_text[0].lower():
             production_df = production_df[production_df['bedtype'] == bed_type].reset_index(drop=True)
 
-    tfidf_matrix = tfidf.fit_transform(production_df['key_words'])
-    text_matrix = tfidf.transform(cleaned_text)
+    if len(production_df) < 1:
+        tfidf_matrix = tfidf.fit_transform(df['key_words'])
+        text_matrix = tfidf.transform(cleaned_text)
+
+    else:
+        tfidf_matrix = tfidf.fit_transform(production_df['key_words'])
+        text_matrix = tfidf.transform(cleaned_text)
 
     results = pd.DataFrame(cosine_similarity(tfidf_matrix, text_matrix))
 
