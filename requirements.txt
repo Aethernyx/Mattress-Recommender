@@ -170,7 +170,6 @@ wcwidth==0.1.8
 webencodings==0.5.1
 Werkzeug==0.16.0
 widgetsnbextension==3.5.1
-wordcloud==1.6.0.post80+g0aba08f
 wrapt==1.11.2
 yarg==0.1.9
 zipp==1.1.0
