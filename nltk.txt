@@ -1,1 +1,6 @@
-rake_nltk==1.0.4
+popular
+stopwords
+wordnet
+punkt
+pros_cons
+reuters 

@@ -3,3 +3,4 @@ pandas==0.25.3
 numpy==1.17.4
 scikit_learn==0.24.1
 gunicorn==19.10.0
+rake_nltk==1.0.4
