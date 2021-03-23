@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 import pandas as pd
 import numpy as np
-import pickle
 from rake_nltk import Rake
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
